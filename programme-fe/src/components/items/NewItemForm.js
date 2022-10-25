@@ -32,6 +32,8 @@ var NewItemForm = inject("store")(
           };
 
           createItem = e => {
+            console.log(e);
+            console.log(this.state);
             e.preventDefault();
             axios.post(ITEMS_API_URL, this.state).then(() => {
               this.props.resetState();

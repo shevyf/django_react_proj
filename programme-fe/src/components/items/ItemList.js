@@ -45,7 +45,7 @@ var ItemList = inject('store')(
                               />
                               &nbsp;&nbsp;
                               <ConfirmDeleteItemModal
-                                pk={item.pk}
+                                item={item}
                                 resetState={this.props.resetState}
                               />
                             </td>

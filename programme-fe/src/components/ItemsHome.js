@@ -19,20 +19,15 @@ var ItemsHome = inject('store')(
         this.resetState();
       }
 
-      sortByTime(data){
-        data.sort((a,b) => {
-          if (a.time < b.time)
-            return -1;
-          if (a.time > b.time)
-            return 1;
-          return 0;
-        })
-      }
 
       getItems = () => {
         axios.get(ITEMS_API_URL).then(res => {
             var data = res.data;
             data.sort((a,b) => {
+              if (a.time === null)
+                  return 1;
+              if (b.time === null)
+              return -1;
               if (a.time < b.time)
                 return -1;
               if (a.time > b.time)

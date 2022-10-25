@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from "mobx-react";
 import store from "./Store";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import { BrowserRouter } from 'react-router-dom';
 
 const stores = {
   store
@@ -16,7 +16,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider {...stores}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );

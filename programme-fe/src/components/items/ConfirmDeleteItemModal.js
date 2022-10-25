@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Modal, ModalHeader, Button, ModalFooter } from "reactstrap";
+import { Modal, ModalHeader, ModalBody, Button, ModalFooter } from "reactstrap";
 
 import axios from "axios";
 
@@ -24,6 +24,7 @@ class ConfirmDeleteItemModal extends Component {
   };
 
   render() {
+    const { item } = this.props;
     return (
       <Fragment>
         <Button color="danger" size="sm" onClick={() => this.toggle()}>
@@ -33,7 +34,14 @@ class ConfirmDeleteItemModal extends Component {
           <ModalHeader toggle={this.toggle}>
             Do you really want to delete this programme item?
           </ModalHeader>
-
+          <ModalBody>
+            <h3>
+              {item.title}
+            </h3>
+            <p>
+              {item.description}
+            </p>
+          </ModalBody>
           <ModalFooter>
             <Button type="button" onClick={() => this.toggle()}>
               Cancel
@@ -41,7 +49,7 @@ class ConfirmDeleteItemModal extends Component {
             <Button
               type="button"
               color="primary"
-              onClick={() => this.deleteItem(this.props.pk)}
+              onClick={() => this.deleteItem(item.pk)}
             >
               Yes
             </Button>
