@@ -1,29 +1,19 @@
 import React, { Component } from "react";
 import { Col, Container, Row } from "reactstrap";
-import ItemList from "./items/ItemList";
-import NewItemModal from "./items/NewItemModal";
+import LocationsList from "./locations/LocationsList";
+import NewLocationModal from "./locations/NewLocationModal";
 import { inject, observer } from "mobx-react";
 
 
-var ItemsHome = inject('store')(
+var LocationsHome = inject('store')(
   observer(
-    class ItemsHome extends Component {
+    class LocationsHome extends Component {
       componentDidMount() {
         this.resetState();
       }
 
-      sortByName(data){
-        data.sort((a,b) => {
-          if (a.name < b.name)
-            return -1;
-          if (a.name > b.name)
-            return 1;
-          return 0;
-        })
-      }
-
       resetState = () => {
-        this.props.store.loadAttendees();
+        this.props.store.loadLocations();
       };
 
       render() {
@@ -32,7 +22,6 @@ var ItemsHome = inject('store')(
             <Row>
               <Col>
                 <LocationsList
-                  items={this.props.store.locations}
                   resetState={this.resetState}
                 />
               </Col>
@@ -50,4 +39,4 @@ var ItemsHome = inject('store')(
 )
 
 
-export default ItemsHome;
+export default LocationsHome;

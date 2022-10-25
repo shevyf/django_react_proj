@@ -12,16 +12,6 @@ var AttendeesHome = inject('store')(
         this.resetState();
       }
 
-      sortByName(data){
-        data.sort((a,b) => {
-          if (a.name < b.name)
-            return -1;
-          if (a.name > b.name)
-            return 1;
-          return 0;
-        })
-      }
-
       resetState = () => {
         this.props.store.loadAttendees();
       };
