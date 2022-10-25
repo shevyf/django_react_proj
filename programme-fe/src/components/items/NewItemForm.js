@@ -13,22 +13,21 @@ var NewItemForm = inject("store")(
             pk: 0,
             title: "",
             description: "",
-            moderator: {},
-            location: {},
-            time: ""
+            moderator: null,
+            location: null,
+            time: null
           };
 
           componentDidMount() {
             if (this.props.item) {
               const { pk, title, description, moderator, location, time } = this.props.item;
-              this.setState({ pk, title, description, moderator, location, time });
+              console.log(moderator);
+              this.setState({ pk, title, description, time });
+              this.setState({ 'moderator': (!moderator ? null : moderator.pk), "location": (!location ? null : location.pk) })
             }
           }
 
           onChange = e => {
-            e.target.name == 'location' ?
-              this.setState({ [e.target.name]: this.props.store.locationFromId(e.target.value)})
-               :
               this.setState({ [e.target.name]: e.target.value });
           };
 
@@ -72,8 +71,9 @@ var NewItemForm = inject("store")(
                     onChange={this.onChange}
                     value={this.defaultIfEmpty(this.state.location)}
                   >
+                    <option value="">Select a location</option>
                     {!this.props.store.locations ? (
-                      <option value="0">No locations available</option>
+                      <option>No locations available</option>
                     ) : (
                       this.props.store.locations.map(location => (
                         <option value={location.pk}>{location.name}</option>
@@ -99,6 +99,7 @@ var NewItemForm = inject("store")(
                     onChange={this.onChange}
                     value={this.defaultIfEmpty(this.state.moderator)}
                   >
+                    <option value="">Select a moderator</option>
                   {!this.props.store.attendees ? (
                       <option value="0">No attendees available</option>
                     ) : (

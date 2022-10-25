@@ -14,7 +14,7 @@ export class Store {
       attendees: observable,
       loadLocations: action,
       setLocations: action,
-      getLocation: false
+      locationFromId: action
     })
   }
 
@@ -27,8 +27,11 @@ export class Store {
   }
 
   locationFromId(pk) {
-    console.log("getting location");
     return this.locations.find(obj => {return obj.pk == pk});
+  }
+
+  moderatorFromId(pk) {
+    return this.attendees.find(obj => {return obj.pk == pk});
   }
 
   loadAttendees = () => {

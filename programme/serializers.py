@@ -17,8 +17,6 @@ class LocationSerializer(serializers.ModelSerializer):
 
 
 class ItemSerializer(serializers.ModelSerializer):
-    moderator = AttendeeSerializer()
-    location = LocationSerializer()
 
     class Meta:
         model = Item
