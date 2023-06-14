@@ -5,6 +5,12 @@ import { Nav, Navbar, NavbarBrand, NavLink } from 'reactstrap';
 import logo from '../logo.svg';
 
 class Header extends Component {
+  mark() {
+	  console.log('first mark');
+	  console.log(newrelic.info);
+    if (typeof newrelic !== 'undefined'){ newrelic.interaction()}
+  }
+
   render() {
     return (
       <div className="text-center">
@@ -24,7 +30,7 @@ class Header extends Component {
             </NavbarBrand>
             <Nav className="ml-auto" navbar>
               <NavLink tag={Link} to="/programme">Programme</NavLink>
-              <NavLink tag={Link} to="/attendees">Attendees</NavLink>
+              <NavLink tag={Link} to="/attendees" onClick={this.mark}>Attendees</NavLink>
               <NavLink tag={Link} to="/locations">Locations</NavLink>
             </Nav>
           </Navbar>

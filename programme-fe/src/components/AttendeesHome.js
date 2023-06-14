@@ -12,11 +12,17 @@ var AttendeesHome = inject('store')(
         this.resetState();
       }
 
+      componentDidUpdate() {
+        console.log('did update')
+        addMarker('TEST',{ATTR1: "test",ATTR2: "samophlange"})
+      }
+
       resetState = () => {
         this.props.store.loadAttendees();
       };
 
       render() {
+	addMarker('TEST',{ATTR1: "test",ATTR2: "samophlange"})
         return (
           <Container style={{ marginTop: "20px" }}>
             <Row>

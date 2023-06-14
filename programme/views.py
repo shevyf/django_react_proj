@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
@@ -126,4 +127,9 @@ def locations_detail(request, pk):
     elif request.method == 'DELETE':
         location.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+from django.shortcuts import render
+
+def index(request):
+  return render(request, "index.html")
 

@@ -6,13 +6,18 @@ import AttendeesHome from "./components/AttendeesHome";
 import { inject, observer } from "mobx-react";
 import { Col, Container, Row } from "reactstrap";
 import { Route, Routes } from 'react-router-dom';
-
+import addMarker from './MarkerService.js';
 
 var App = inject("store")(
     class App extends Component {
-      componentDidMount() {
+      componentWillMount() {
         this.props.store.loadLocations();
         this.props.store.loadAttendees();
+      }
+
+      componentDidUpdate() {
+	console.log('did update')
+	addMarker('TEST',{ATTR1: "test",ATTR2: "samophlange"})
       }
 
       render() {
