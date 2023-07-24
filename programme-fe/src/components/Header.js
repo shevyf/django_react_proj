@@ -11,6 +11,21 @@ class Header extends Component {
     if (typeof newrelic !== 'undefined'){ newrelic.interaction()}
   }
 
+  setAttribute() {
+    setTimeout(() => {
+      if (typeof newrelic !== 'undefined') {
+        console.log('samophlange happening');
+	newrelic.setCustomAttribute('samophlange','true');
+      } else {
+        setAttribute()
+      }
+    }, 100)
+  }
+
+  componentDidMount() {
+    this.setAttribute()
+  }
+
   render() {
     return (
       <div className="text-center">

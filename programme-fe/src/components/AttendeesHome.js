@@ -3,6 +3,7 @@ import { Col, Container, Row } from "reactstrap";
 import AttendeesList from "./attendees/AttendeesList";
 import NewAttendeeModal from "./attendees/NewAttendeeModal";
 import { inject, observer } from "mobx-react";
+import addMarker from "../MarkerService";
 
 
 var AttendeesHome = inject('store')(
