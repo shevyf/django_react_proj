@@ -1,14 +1,24 @@
 export function addMarker(name, payload) {
   console.log('marking');
   if (typeof newrelic !== 'undefined'){
-	  console.log('really marking');
+    console.log('really marking');
+    console.dir(newrelic.interaction());
     newrelic.interaction().setAttribute('EVENT_NAME', name);
     for (var key in payload) {
       if(payload.hasOwnProperty(key)){
-        newrelic. interaction () . setAttribute(key, payload [key]);
+        newrelic.interaction ().setAttribute(key, payload [key]);
       }
     }
-    newrelic.interaction().save().end()
+    newrelic.interaction().save()
+    setTimeout(() => {
+      console.log("current interaction");
+      console.dir(newrelic.interaction());
+    }, 10000);
+  
+    setTimeout(() => {
+      console.log("ending interaction");
+      newrelic.interaction().end();
+    }, 20000);
   }
 }
 

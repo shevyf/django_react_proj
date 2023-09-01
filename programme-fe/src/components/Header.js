@@ -47,6 +47,8 @@ class Header extends Component {
               <NavLink tag={Link} to="/programme">Programme</NavLink>
               <NavLink tag={Link} to="/attendees" onClick={this.mark}>Attendees</NavLink>
               <NavLink tag={Link} to="/locations">Locations</NavLink>
+	      <NavLink tag={Link} to="/iframetest">Iframe Test</NavLink>
+	      <NavLink tag={Link} to="/videotest">Video Test</NavLink>
             </Nav>
           </Navbar>
         </div>

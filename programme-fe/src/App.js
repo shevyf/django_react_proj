@@ -3,6 +3,8 @@ import Header from "./components/Header";
 import ItemsHome from "./components/ItemsHome";
 import LocationsHome from "./components/LocationsHome";
 import AttendeesHome from "./components/AttendeesHome";
+import IframeTest from "./components/IframeTest";
+import VideoTest from "./components/VideoTest";
 import { inject, observer } from "mobx-react";
 import { Col, Container, Row } from "reactstrap";
 import { Route, Routes } from 'react-router-dom';
@@ -32,7 +34,9 @@ var App = inject("store")(
                 <Route path="/programme" element={ <ItemsHome/> }/>
                 <Route path="/locations" element={ <LocationsHome/> }/>
                 <Route path="/attendees" element={ <AttendeesHome/> }/>
-                <Route exact path="/" element={ <ItemsHome/> }/>
+		<Route path="/iframetest" element={ <IframeTest/> }/>
+                <Route path="/videotest" element={ <VideoTest/> }/>
+		<Route exact path="/" element={ <ItemsHome/> }/>
               </Routes>
             </Row>
           </Col>

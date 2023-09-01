@@ -133,3 +133,6 @@ from django.shortcuts import render
 def index(request):
   return render(request, "index.html")
 
+def iframe(request):
+    return render(request, "iframe.html")
+

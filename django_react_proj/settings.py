@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "34.253.29.245", "3.249.246.37"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "34.253.29.245", "pixiespace.ie", "www.pixiespace.ie"]
 
 
 # Application definition
@@ -57,6 +57,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.common.CommonMiddleware',
 ]
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ROOT_URLCONF = 'django_react_proj.urls'
 

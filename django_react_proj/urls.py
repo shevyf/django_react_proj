@@ -25,5 +25,6 @@ urlpatterns = [
     re_path(r'^api/attendees/([0-9]+)$', views.attendees_detail),
     re_path(r'^api/locations/$', views.locations_list),
     re_path(r'^api/locations/([0-9]+)$', views.locations_detail),
+    re_path(r'^iframe\.html$', views.iframe),
     re_path(r"^(?:.*)?$", views.index),
 ]
