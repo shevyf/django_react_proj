@@ -7,11 +7,11 @@ import { Provider } from "mobx-react";
 import store from "./Store";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter } from 'react-router-dom';
-import { BrowserAgent } from '@newrelic/browser-agent/loaders/browser-agent';
+import { BrowserAgent } from '@newrelic/browser-agent/src/loaders/browser-agent';
 
 // NR browser agent options
 const options = {
-  init: {distributed_tracing:{enabled:true},privacy:{cookies_enabled:true},ajax:{deny_list:["bam.eu01.nr-data.net"]}}, // NREUM.init
+  init: {distributed_tracing:{enabled:true},privacy:{cookies_enabled:true}}, // NREUM.init
   info: {beacon:"bam.eu01.nr-data.net",errorBeacon:"bam.eu01.nr-data.net",licenseKey:"NRJS-c144e1466ea45ab20e7",applicationID:"535881608",sa:1}, // NREUM.info
   loader_config: {accountID:"3659611",trustKey:"3659611",agentID:"535881608",licenseKey:"NRJS-c144e1466ea45ab20e7",applicationID:"535881608"} // NREUM.loader_config
 };
