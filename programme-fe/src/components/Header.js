@@ -5,10 +5,12 @@ import { Nav, Navbar, NavbarBrand, NavLink } from 'reactstrap';
 import logo from '../logo.svg';
 
 class Header extends Component {
+  wrappedMark = newrelic.interaction().save().createTracer('wrappedMarkTracer', this.mark);
+
   mark() {
 	  console.log('first mark');
 	  console.log(newrelic.info);
-    if (typeof newrelic !== 'undefined'){ newrelic.interaction()}
+    if (typeof newrelic !== 'undefined'){ newrelic.interaction().save()}
   }
 
   setAttribute() {
@@ -45,7 +47,7 @@ class Header extends Component {
             </NavbarBrand>
             <Nav className="ml-auto" navbar>
               <NavLink tag={Link} to="/programme">Programme</NavLink>
-              <NavLink tag={Link} to="/attendees" onClick={this.mark}>Attendees</NavLink>
+              <NavLink tag={Link} to="/attendees" onClick={this.wrappedMark}>Attendees</NavLink>
               <NavLink tag={Link} to="/locations">Locations</NavLink>
 	      <NavLink tag={Link} to="/iframetest">Iframe Test</NavLink>
 	      <NavLink tag={Link} to="/videotest">Video Test</NavLink>
