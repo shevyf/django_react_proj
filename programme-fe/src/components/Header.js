@@ -5,12 +5,12 @@ import { Nav, Navbar, NavbarBrand, NavLink } from 'reactstrap';
 import logo from '../logo.svg';
 
 class Header extends Component {
-  wrappedMark = newrelic.interaction().save().createTracer('wrappedMarkTracer', this.mark);
+  // wrappedMark = newrelic.interaction().save().createTracer('wrappedMarkTracer', this.mark);
 
   mark() {
 	  console.log('first mark');
 	  console.log(newrelic.info);
-    if (typeof newrelic !== 'undefined'){ newrelic.interaction().save()}
+  //  if (typeof newrelic !== 'undefined'){ newrelic.interaction().save()}
   }
 
   setAttribute() {
@@ -25,7 +25,7 @@ class Header extends Component {
   }
 
   componentDidMount() {
-    this.setAttribute()
+//    this.setAttribute()
   }
 
   render() {

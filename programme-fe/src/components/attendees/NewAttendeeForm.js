@@ -27,7 +27,16 @@ var NewAttendeeForm = inject("store")(
               this.setState({ [e.target.name]: e.target.value });
           };
 
-          createAttendee = e => {
+	  createAttendee = e => {
+		  console.log("new attendee start");
+		  newrelic.interaction()
+		    .setName("saveNewAttendee" + this.state.email)
+		    .save()
+		    .createTracer("saveNewAttendeeTracer", this.createAttendeeCallback(e))
+	  }
+
+          createAttendeeCallback = e => {
+	    console.log("new attendee callback start");
             e.preventDefault();
             axios.post(ATTENDEES_API_URL, this.state).then(() => {
               this.props.resetState();

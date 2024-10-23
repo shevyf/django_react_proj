@@ -1,10 +1,14 @@
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
 
 from .models import Item, Attendee, Location
 from .serializers import *
+
+import newrelic.agent
+import json
 
 @api_view(['GET', 'POST'])
 def items_list(request):
@@ -134,5 +138,20 @@ def index(request):
   return render(request, "index.html")
 
 def iframe(request):
+    newrelic.agent.disable_browser_autorum()
     return render(request, "iframe.html")
 
+def mynrindex(request):
+    return render(request, "mynrindex.html")
+
+def redirect_test(request):
+    return redirect("https://newrelic.com")
+
+def return_request_headers(request):
+    headers = '{'
+    for header in request.headers:
+        headers += '"' + header + '"' + ':' + '"' + str(request.headers[header]) + '",'
+    headers = headers[:-1]
+    headers += '}'
+    # headers = json.dumps(request.headers)
+    return HttpResponse(headers, content_type="application/json")

@@ -7,21 +7,22 @@ import { Provider } from "mobx-react";
 import store from "./Store";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter } from 'react-router-dom';
-import { BrowserAgent } from '@newrelic/browser-agent/src/loaders/browser-agent';
+// import { BrowserAgent } from '@newrelic/browser-agent/loaders/browser-agent';
+import { MicroAgent } from '@newrelic/browser-agent/loaders/micro-agent';
 
 // NR browser agent options
-const options = {
-  init: {
-        //  distributed_tracing:{enabled:true,cors_use_newrelic_header:false,cors_use_tracecontext_headers:false,allowed_origins:['https://d1125yjrl6c5i2.cloudfront.net']},
-	  distributed_tracing:{enabled:true},
-	  privacy:{cookies_enabled:true},
-	  proxy:{beacon: "d1125yjrl6c5i2.cloudfront.net"}
-  }, // NREUM.init
-  info: {beacon:"bam.eu01.nr-data.net",errorBeacon:"bam.eu01.nr-data.net",licenseKey:"NRJS-c144e1466ea45ab20e7",applicationID:"535881608",sa:1}, // NREUM.info
-  loader_config: {accountID:"3659611",trustKey:"3659611",agentID:"535881608",licenseKey:"NRJS-c144e1466ea45ab20e7",applicationID:"535881608"} // NREUM.loader_config
-};
 
-new BrowserAgent(options);
+// Populate using values in copy-paste JavaScript snippet.
+const options = {
+  init: {privacy:{cookies_enabled:false},ajax:{deny_list:["bam.eu01.nr-data.net"]},proxy:{beacon: "nrproxy.pixiespace.ie"},  feature_flags: ['soft_nav']}, // NREUM.init
+  info: {beacon:"bam.eu01.nr-data.net",errorBeacon:"bam.eu01.nr-data.net",licenseKey:"NRJS-c144e1466ea45ab20e7",applicationID:"538609181",sa:1}, // NREUM.info
+  loader_config: {accountID:"3659611",trustKey:"3659611",agentID:"538609181",licenseKey:"NRJS-c144e1466ea45ab20e7",applicationID:"538609181"} // NREUM.loader_config
+}
+
+// The agent loader code executes immediately on instantiation.
+// new BrowserAgent(options)
+new MicroAgent(options)
+
 
 const stores = {
   store
@@ -41,4 +42,4 @@ root.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// reportWebVitals();

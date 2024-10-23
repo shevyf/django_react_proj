@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Col, Container, Row } from "reactstrap";
+import { useNavigate } from 'react-router-dom';
+import BackButton from './common/BackButton';
 
 
 class IframeTest extends Component {
@@ -15,6 +17,7 @@ class IframeTest extends Component {
           <Col>
             <iframe src="/iframe.html" name="iframetest" width="90%" height="500" style={{border: "1px solid black;"}}>
             </iframe>
+	    <BackButton />
           </Col>
         </Row>
       </Container>

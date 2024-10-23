@@ -15,7 +15,7 @@ var AttendeesHome = inject('store')(
 
       componentDidUpdate() {
         console.log('did update')
-        addMarker('TEST',{ATTR1: "test",ATTR2: "samophlange"})
+        // addMarker('TEST',{ATTR1: "test",ATTR2: "samophlange"})
       }
 
       resetState = () => {
@@ -23,7 +23,7 @@ var AttendeesHome = inject('store')(
       };
 
       render() {
-	addMarker('TEST',{ATTR1: "test",ATTR2: "samophlange"})
+	// addMarker('TEST',{ATTR1: "test",ATTR2: "samophlange"})
         return (
           <Container style={{ marginTop: "20px" }}>
             <Row>
